@@ -75,6 +75,7 @@ const validate = (input) => {
 export default function SignupPic({ location }) {
 
     const [suivant, setSuivant] = useState(0);
+    const [disabledPicPhase, setPicPhase] = useState(false);
     const [state, setState] = useState({ photo: false, render: false, suggestedUsers: [], description: "", subjects: [], selectedSubjects: [], errors: { description: "" } });
     const fileRef = useRef();
     const imageRef = useRef();
@@ -154,6 +155,7 @@ export default function SignupPic({ location }) {
 
     const setClick = async () => {
         if (suivant === 0 && state.photo) {
+            setPicPhase(true);
             try {
                 const { data, headers } = await http.post(
                     serverPath + 'signup_photo.php',
@@ -169,33 +171,37 @@ export default function SignupPic({ location }) {
                     });
                 }
                 setSuivant(prevSuivant => prevSuivant === 3 ? prevSuivant : prevSuivant + 1);
+                setPicPhase(false);
                 console.log(headers['x-auth-token']);
             } catch (error) {
                 toast.error(error.response)
+                setPicPhase(false);
             }
 
         } else if (suivant === 0 && !state.photo) {
             setSuivant(prevSuivant => prevSuivant === 3 ? prevSuivant : prevSuivant + 1);
         } else if (suivant === 1 && state.description) {
-            setSuivant(prevSuivant => prevSuivant === 3 ? prevSuivant : prevSuivant + 1);
+            setPicPhase(true);
             try {
                 console.log(getUser().photo);
                 const { data, headers } = await http.post(
                     serverPath + 'signup_bio.php',
                     bioToSend(state),
                     http.urlEncoded(cookies.get("x-auth-token"))
-                );
-                toast.success(data);
-                if (headers['x-auth-token']) {
+                    );
+                    toast.success(data);
+                    if (headers['x-auth-token']) {
                     cookies.remove("x-auth-token");
                     cookies.set('x-auth-token', headers['x-auth-token'], {
                         path: '/',
                         maxAge: 3600 * 24 * 30 * 12
                     });
                 }
-
+                setSuivant(prevSuivant => prevSuivant === 3 ? prevSuivant : prevSuivant + 1);
+                setPicPhase(false);
                 console.log(headers['x-auth-token']);
             } catch (error) {
+                setPicPhase(false);
                 toast.error(error.response)
             }
 
@@ -206,6 +212,7 @@ export default function SignupPic({ location }) {
             setSuivant(prevSuivant => prevSuivant === 3 ? prevSuivant : prevSuivant + 1);
         }
         else if (suivant === 2 && state.selectedSubjects.length) {
+            setPicPhase(true);
             try {
                 console.log(getUser().photo);
                 const { data, headers } = await http.post(
@@ -221,14 +228,16 @@ export default function SignupPic({ location }) {
                         maxAge: 3600 * 24 * 30 * 12
                     });
                 }
-
+                setPicPhase(false);
                 setSuivant(prevSuivant => prevSuivant === 3 ? prevSuivant : prevSuivant + 1);
                 console.log(headers['x-auth-token']);
             } catch (error) {
+                setPicPhase(false);
                 toast.error(error.response)
             }
         }
         else if (suivant === 3) {
+            setPicPhase(true);
             try {
                 const { data, headers } = await http.get(
                     serverPath + 'signup_completed.php',
@@ -243,14 +252,16 @@ export default function SignupPic({ location }) {
                     });
                 }
 
-                setSuivant(prevSuivant => prevSuivant === 3 ? prevSuivant : prevSuivant + 1);
                 console.log(headers['x-auth-token']);
+                setSuivant(prevSuivant => prevSuivant === 3 ? prevSuivant : prevSuivant + 1);
+                setPicPhase(false);
                 setState(prevState => {
                     return {
                         ...prevState, render: true
                     }
                 })
             } catch (error) {
+                setPicPhase(false);
                 toast.error(error.response)
             }
         }
@@ -350,7 +361,7 @@ export default function SignupPic({ location }) {
                 <div className="div--signup--login">
                     <div className="header--div--signup--login customize--div--photo--page">
                         <TwitterIcon></TwitterIcon>
-                        <button className={"signup--suivant--button customize--button--photo--page " + (disableSuivantButton() ? 'button--opacity' : "")} disabled={disableSuivantButton()} onClick={(e) => setClick(e)} type="button" >{appliquerOuPasser(suivant) ? "Terminer" : "Passer pour le moment"}</button>
+                        <button className={"signup--suivant--button customize--button--photo--page " + ((disableSuivantButton() || disabledPicPhase) ? 'button--opacity' : "")} disabled={disableSuivantButton() || disabledPicPhase ? true : false} onClick={(e) => setClick(e)} type="button" >{appliquerOuPasser(suivant) ? "Terminer" : "Passer pour le moment"}</button>
                     </div>
                     <div className="body--signup--personnaliser--mdp">
                         {suivant === 0 && (<div className="body--signup">
