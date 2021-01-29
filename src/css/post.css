@@ -1,0 +1,136 @@
+.post--container--div {
+    padding: 10px 15px;
+    width: 100%;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(237, 239, 240);
+}
+
+
+.retweet--div {
+    display: flex;
+    align-items: center;
+    padding-left: 42px;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgb(91, 112, 131);
+    line-height: 19.6875px;
+    margin-bottom: 5px;
+}
+
+.post--container--div:hover {
+    background-color: rgb(247, 249, 250);
+}
+
+
+.avatar--description {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.avatar--description .avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+    float: left;
+}
+
+.avatar--description {
+    width: 100%;
+}
+
+.image--div {
+    width: 100%;
+}
+
+.image--div p {
+    margin-bottom: 5px;
+}
+
+.photo-for-post {
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.name--username--timestamp {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.name--username--timestamp span {
+    transform: translateY(-3px);
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.name--username--timestamp h4,
+.name--username--timestamp h5 {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(15, 20, 25);
+    line-height: 19.6875px;
+    margin-right: 5px;
+}
+
+.name--username--timestamp h5 {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(91, 112, 131);
+    line-height: 19.6875px;
+
+}
+
+
+.retweet button {
+    color: var(--main-color);
+}
+
+.retweet {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.retweet .retweet-span {
+    font-family: sans-serif;
+    position: relative;
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px 10px;
+    background-color: #333333;
+    color: white;
+    cursor: auto;
+    border-radius: 5px;
+    opacity: 0;
+    transition: .3s;
+    margin-left: 8px;
+    z-index: 999;
+}
+
+.retweet .retweet-span::after {
+    z-index: 999;
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #333333;
+    transform: rotate(45deg);
+    top: 30%;
+    left: -4%;
+    opacity: 0;
+    transition: .3s;
+}
+
+.post--container--div:hover .retweet-span,
+.post--container--div:hover .retweet-span::after {
+    opacity: 1;
+}

@@ -1,0 +1,23 @@
+.subject {
+    padding: 3px 18px;
+    background-color: transparent;
+    font-size: 18px;
+    border: 1px solid #dddddd;
+    font-weight: 600;
+    margin: 9px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.subject--active {
+    background-color: var(--main-color);
+    color: white !important;
+    border: none;
+}
+
+.subject:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+

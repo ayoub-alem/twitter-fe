@@ -1,0 +1,169 @@
+.sidebar--div {
+    padding: 6px 30px 5px 20px;
+    border-right: 1px solid #dddddd;
+    height: 100vh;
+    flex-basis: .3;
+    min-width: 320px;
+    position: fixed;
+}
+
+.sidebar--div .twitter-logo .MuiSvgIcon-root {
+    color: var(--main-color) !important;
+    font-size: 32px !important;
+}
+
+.sidebar--div .twitter-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    margin-left: 38px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.sidebar--div .sidebar--links--div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 100px;
+    padding-left: 30px;
+}
+
+.sidebar--link a {
+    background-color: transparent;
+    padding: 8px 25px 8px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    color: #333333;
+}
+
+.sidebar--link span {
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.sidebar--div .sidebar--link {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    min-width: 150px;
+}
+
+.sidebar--div .sidebar--link .MuiSvgIcon-root {
+    font-size: 1.9em;
+    margin-right: 13px;
+}
+
+.sidebar--div a.active {
+    color: var(--main-color) !important;
+}
+
+
+.sidebar--div .sidebar--link:hover {
+    transition: .4s;
+    background-color: rgba(29, 161, 242, 0.1);
+    border-radius: 40px;
+}
+
+.sidebar--div .sidebar--link:hover .MuiSvgIcon-root,
+.sidebar--div .sidebar--link:hover span {
+    color: var(--main-color);
+}
+
+.sidebar--div button {
+    margin-top: 10px;
+    background-color: var(--main-color);
+    padding: 17px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 40px;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    transition: .2s;
+}
+
+.sidebar--div button:hover {
+    background-color: #0c7fc7;
+    box-shadow: 0 0 10px rgba(29, 161, 242, 0.1);
+}
+
+.footer--logout .MuiAvatar-root.MuiAvatar-circle {
+    border: 1px solid rgba(29, 161, 242, 0.1);
+    float: left;
+    margin-right: 10px;
+}
+
+.footer--logout {
+    margin-top: 20px;
+    margin-left: 30px;
+    padding: 8px 7px 10px;
+    display: flex;
+    cursor: pointer;
+    border-radius: 40px;
+    align-items: center;
+    transition: .3s;
+    position: relative;
+}
+
+.footer--logout:hover,
+.sidebar--div .twitter-logo:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.footer--logout:hover .MuiSvgIcon-root {
+    color: var(--main-color);
+}
+
+.footer--logout h5:last-of-type {
+    margin-top: 3px;
+    color: #555555;
+    font-weight: 500;
+}
+
+.footer--logout .MuiSvgIcon-root {
+    margin-left: auto;
+    font-size: 1.9em;
+}
+
+.span--popup--logout {
+    font-family: sans-serif;
+    position: absolute;
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px 10px;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333333;
+    color: white;
+    cursor: auto;
+    border-radius: 5px;
+    opacity: 0;
+    transition: .3s;
+}
+
+.span--popup--logout::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #333333;
+    transform: rotate(45deg);
+    top: 80%;
+    left: 50%;
+    opacity: 0;
+    transition: .3s;
+}
+
+.footer--logout:hover .span--popup--logout,
+.footer--logout:hover .span--popup--logout::after {
+    opacity: 1;
+}

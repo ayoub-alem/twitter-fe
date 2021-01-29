@@ -1,0 +1,33 @@
+.user {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    border-top: 1px solid #dddddd;
+    padding: 10px 12px;
+}
+
+.name--description--user {
+    flex-grow: 4;
+    margin-left: 10px;
+    overflow-x: hidden;
+}
+
+.name--description--user p {
+    color: grey;
+    font-weight: 400;
+}
+
+.subject.suivre {
+    border-color: var(--main-color);
+    color: var(--main-color);
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+}
+
+.suivre--active {
+    background-color: var(--main-color);
+    color: white !important;
+}

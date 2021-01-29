@@ -1,0 +1,119 @@
+.customize--button--photo--page {
+    background-color: transparent;
+    color: var(--main-color);
+    padding: 0;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.customize--button--photo--page:hover {
+    transition: .3s;
+    background-color: transparent;
+    color: #0c7fc7;
+}
+
+
+.div--image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+}
+
+.addAphotoIcon {
+    position: relative;
+}
+
+.div--image .addAphotoIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.addAphotoIcon .MuiSvgIcon-root {
+    font-size: 28px;
+    color: #55585a;
+}
+
+.photo--signup--titre {
+    margin-bottom: 9px;
+}
+
+.div--image .addAphotoIcon .MuiSvgIcon-root:hover {
+    transition: .3s;
+    color: #a4a9ac;
+    cursor: pointer;
+}
+
+.div--image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.body--personnaliser .paragraphe-above-bio {
+    margin-bottom: 10px;
+}
+
+.subject--container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    color: #0c7fc7;
+    width: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+    width: 5px;
+}
+
+.h3--suggestions {
+    width: fit-content;
+    margin: 20px;
+    font-weight: 800;
+    margin: 25px 0px 10px 20px;
+    font-size: 1.23em;
+}
+
+.h5--suggestions {
+    font-size: 1em;
+    margin-top: 15px;
+}
+
+.user--container {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.user--container::-webkit-scrollbar {
+    width: 6px;
+    /* width of the entire scrollbar */
+}
+
+.user--container::-webkit-scrollbar-track {
+    background: #a4a9ac;
+    border-radius: 5px;
+    /* color of the tracking area */
+}
+
+.user--container::-webkit-scrollbar-thumb {
+    background-color: #55585a;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+}

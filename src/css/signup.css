@@ -1,0 +1,166 @@
+.div--wrap {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+}
+
+/* header--div--signup--login customize--div--photo--page  */
+
+.div--signup--login {
+    width: 600px;
+    height: 625px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
+    padding: 10px 25px;
+    border-radius: 12px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.header--div--signup--login {
+    width: 100%;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    height: 30px;
+}
+
+
+.header--div--signup--login .button--opacity {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.body--signup--personnaliser--mdp {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+
+.div--wrap .signup--titre {
+    margin-bottom: 30px;
+}
+
+
+.signup--suivant--button {
+    padding: 8px 20px;
+    color: white;
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    outline: none;
+    font-weight: 700;
+    margin-left: auto;
+    position: absolute;
+    right: 0;
+}
+
+.signup--suivant--button:hover {
+    transition: .2s;
+    background-color: #0c7fc7;
+}
+
+.signup--suivant--button--disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.customize--login--button{
+    color: var(--main-color) !important;
+    position: absolute;
+    left: 0%;
+}
+
+
+.header--div--signup--login .MuiSvgIcon-root {
+    color: var(--main-color) !important;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px !important;
+}
+
+.header--div--signup--login .arrowBack--button {
+    font-size: 30px !important;
+    color: var(--main-color) !important;
+    position: absolute;
+    left: 0%;
+}
+
+.header--div--signup--login button.MuiButtonBase-root.MuiIconButton-root {
+    margin: 0;
+    padding: 20px;
+}
+
+.body--signup .error {
+    color: red;
+    margin: 0;
+}
+
+.div--wrap p {
+    color: grey;
+}
+
+.selects {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 15px;
+}
+
+.selects div:first-of-type {
+    flex-grow: 4 !important;
+    margin-left: 0;
+}
+
+.selects div:last-of-type {
+    margin-right: 0;
+}
+
+.body--personnaliser,
+.body--mdp,
+.body--signup {
+    width: 100%;
+    animation: instructions .5s 0s ease-in forwards;
+}
+
+.body--personnaliser p {
+    margin-top: 15px;
+    display: inline-block;
+    width: 90%;
+}
+
+.wrap--check--p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body--personnaliser input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.body--mdp label {
+    color: grey;
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+
+
+@keyframes instructions {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
