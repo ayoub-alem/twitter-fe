@@ -13,7 +13,6 @@ const User = ({ onClick, id, nom, prenom, description, photo, isFollowed }) => {
                 <h4>{prenom + " " + nom}</h4>
                 <p>{description}</p>
             </div>
-            {console.log(isFollowed)}
             <button onClick={(e) => onClick(e)} id={id} className={isFollowed === "1" ? "subject suivre suivre--active" : "subject suivre "}>{isFollowed === "1" ? "Abonné" : "Suivre"}</button>
         </div>
     )

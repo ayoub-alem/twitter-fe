@@ -10,9 +10,7 @@ function Select({ placeholdeSpan, options, name, handleChange, value }) {
 
     const setFocus = (e) => {
         e.target.classList.add("changeSelectBorderColor");
-        console.log(e.target)
         e.target.parentNode.firstChild.classList.add("changeSpanColor");
-        console.log(focus);
         changeState(true);
     }
 
@@ -22,7 +20,6 @@ function Select({ placeholdeSpan, options, name, handleChange, value }) {
             e.target.parentNode.firstChild.classList.remove("changeSpanColor");
             changeState(false);
         }
-        console.log(focus);
     }
 
 

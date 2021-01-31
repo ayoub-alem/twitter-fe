@@ -40,7 +40,6 @@ const FollowNewUsers = () => {
     const onSuivre = async (e) => {
         let target = e.currentTarget;
         if (e.currentTarget.classList.contains("suivre--active")) {
-            console.log('unfollow started ...', target)
             e.currentTarget.classList.remove("suivre--active");
             e.currentTarget.innerHTML = "Suivre";
             let unfollowed_id = e.currentTarget.id;
@@ -65,11 +64,9 @@ const FollowNewUsers = () => {
             }
         } else {
             let target = e.currentTarget;
-            console.log('follow started ...', target);
             target.classList.add("suivre--active");
             e.currentTarget.innerHTML = "Abonné";
             let followed_id = target.id;
-            console.log(followed_id);
             try {
                 const { data, headers } = await http.post(
                     serverPath + 'suivre.php',

@@ -11,6 +11,7 @@ import "./../css/home.css"
 import HomeHead from './homeHead';
 import Post from './post';
 import RetweetedPost from './retweetedPost';
+import Pusher from "pusher-js";
 
 
 const postToSend = (fileRef, state) => {
@@ -39,7 +40,6 @@ const Flux = () => {
             if (getUser().completed === "1") {
                 let execute = async () => {
                     const posts = async () => await getPosts();
-                    console.log(posts);
                     const retweetedPosts = async () => await getRetweetedPosts();
                     let array = [...await posts(), ...await retweetedPosts()];
                     setState(prevState => {
@@ -49,6 +49,28 @@ const Flux = () => {
                     })
                 }
                 execute();
+            }
+        }
+    }, [])
+    useEffect(() => {
+        if (getUser()) {
+            if (getUser().completed === "1") {
+                // Enable pusher logging - don't include this in production
+                Pusher.logToConsole = true;
+
+                const pusher = new Pusher('0b3634e12be4cfa3970b', {
+                    cluster: 'eu'
+                });
+
+                const channel = pusher.subscribe(getUser().user_id);
+                channel.bind('new_tweet', function (data) {
+                    toast.info(data.message);
+                    setState(prevState =>{
+                        return {
+                            ...prevState, posts: [data.post, ...prevState.posts]
+                        }
+                    })
+                });
             }
         }
     }, [])
@@ -106,7 +128,6 @@ const Flux = () => {
     }
 
     const retweetPost = async (e) => {
-        console.log(e.currentTarget.firstChild.disabled);
         if (e.currentTarget.firstChild.disabled) {
             toast.info("Sorry you can not retweet your post, or a retweeted Post :)")
             return
@@ -134,14 +155,12 @@ const Flux = () => {
 
     return (
         <Fragment>
-            {            console.log(posts)
-            }            {!getUser() && <Redirect to="/signup"></Redirect>}
+            {!getUser() && <Redirect to="/signup"></Redirect>}
             {(getUser() && (getUser().completed === "0") && <Redirect to="/signup_complete"></Redirect>)}
             <HomeHead imageButtonRef={imageButtonRef} onSendNewPost={sendNewPost} fileRef={fileRef} imagePostRef={imagePostRef} handleImage={handleImage} onChange={onChangeTextArea} textAreaValue={newPost.description_post} photoAdded={newPost.photo}></HomeHead>
             <div className="separater--div"></div>
             {(posts.length !== 0) && posts.map((post, index) => {
                 return <Fragment key={index}>
-                    {console.log(index)}
                     {post.retweet === "1" ? <RetweetedPost onClick={retweetPost} postId={post.post_id} userId={post.user_id} retweeterNom={post.nom} retweeterPrenom={post.prenom} photoProfile={post.post_owner_photo} photoPost={post.post_photo} prenom={post.post_owner_prenom} nom={post.post_owner_nom} description={post.description_post} postDate={post.post_date}></RetweetedPost> : <Post onClick={retweetPost} postId={post.post_id} userId={post.user_id} photoProfile={post.photo} photoPost={post.post_photo} prenom={post.prenom} nom={post.nom} description={post.description_post} postDate={post.compare_date}></Post>}
 
                 </Fragment>

@@ -101,7 +101,6 @@ export default function SignupPic({ location }) {
                         }
                     })
                 };
-                console.log(getUser().completed)
                 fetchSubjects();
                 fetchSuggestedUsers();
             }
@@ -183,14 +182,13 @@ export default function SignupPic({ location }) {
         } else if (suivant === 1 && state.description) {
             setPicPhase(true);
             try {
-                console.log(getUser().photo);
                 const { data, headers } = await http.post(
                     serverPath + 'signup_bio.php',
                     bioToSend(state),
                     http.urlEncoded(cookies.get("x-auth-token"))
-                    );
-                    toast.success(data);
-                    if (headers['x-auth-token']) {
+                );
+                toast.success(data);
+                if (headers['x-auth-token']) {
                     cookies.remove("x-auth-token");
                     cookies.set('x-auth-token', headers['x-auth-token'], {
                         path: '/',
@@ -214,7 +212,6 @@ export default function SignupPic({ location }) {
         else if (suivant === 2 && state.selectedSubjects.length) {
             setPicPhase(true);
             try {
-                console.log(getUser().photo);
                 const { data, headers } = await http.post(
                     serverPath + 'signup_sujets.php',
                     subjectsToSend(state),
@@ -300,7 +297,6 @@ export default function SignupPic({ location }) {
     const onSuivre = async (e) => {
         let target = e.currentTarget;
         if (e.currentTarget.classList.contains("suivre--active")) {
-            console.log('unfollow started ...', target)
             e.currentTarget.classList.remove("suivre--active");
             e.currentTarget.innerHTML = "Suivre";
             let unfollowed_id = e.currentTarget.id;
@@ -325,11 +321,9 @@ export default function SignupPic({ location }) {
             }
         } else {
             let target = e.currentTarget;
-            console.log('follow started ...', target);
             target.classList.add("suivre--active");
             e.currentTarget.innerHTML = "Abonné";
             let followed_id = target.id;
-            console.log(followed_id);
             try {
                 const { data, headers } = await http.post(
                     serverPath + 'suivre.php',
@@ -383,8 +377,6 @@ export default function SignupPic({ location }) {
                             <p className="paragraphe-above-bio">Séléectionnez des sujets qui vous intéressent afin de personnaliser votre expérience Twitter, notamment pour trouver des personnes a suivre.</p>
                             <div className="subject--container">
                                 {state.subjects.map(value => <Subject key={value.sujet_id} id={value.sujet_id} onClick={handleSelectSubject} subjectLabel={value.sujet}></Subject>)}
-                                {console.log(state.selectedSubjects)}
-
                             </div>
                         </div>
                         )}
