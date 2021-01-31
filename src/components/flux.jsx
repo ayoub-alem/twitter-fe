@@ -56,7 +56,7 @@ const Flux = () => {
         if (getUser()) {
             if (getUser().completed === "1") {
                 // Enable pusher logging - don't include this in production
-                Pusher.logToConsole = true;
+                // Pusher.logToConsole = true;
 
                 const pusher = new Pusher('0b3634e12be4cfa3970b', {
                     cluster: 'eu'
