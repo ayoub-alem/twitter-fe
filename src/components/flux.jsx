@@ -64,8 +64,9 @@ const Flux = () => {
 
                 const channel = pusher.subscribe(getUser().user_id);
                 channel.bind('new_tweet', function (data) {
-                    toast.info(data.message);
-                    setState(prevState =>{
+                    getUser().user_id === data.post_owner ? toast.success("Post tweeted successfully :)") : toast.info(data.message);
+                    console.log(data.post_owner);
+                    setState(prevState => {
                         return {
                             ...prevState, posts: [data.post, ...prevState.posts]
                         }
@@ -118,7 +119,6 @@ const Flux = () => {
                     maxAge: 3600 * 24 * 30 * 12
                 });
             }
-            console.log(headers['x-auth-token']);
             setState(prevState => {
                 return { ...prevState, newPost: { user_id: "", description_post: "", photo: false } }
             });
