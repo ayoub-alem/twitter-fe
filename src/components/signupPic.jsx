@@ -161,7 +161,7 @@ export default function SignupPic({ location }) {
                     photoToSend(fileRef),
                     http.urlEncoded(cookies.get("x-auth-token"))
                 );
-                toast.success(data);
+                toast.success(data, { toastId: "send-photo-response" });
                 if (headers['x-auth-token']) {
                     cookies.remove("x-auth-token");
                     cookies.set('x-auth-token', headers['x-auth-token'], {
@@ -173,7 +173,7 @@ export default function SignupPic({ location }) {
                 setPicPhase(false);
                 console.log(headers['x-auth-token']);
             } catch (error) {
-                toast.error(error.response)
+                toast.error(error.response, { toastId: "send-photo-response" })
                 setPicPhase(false);
             }
 
