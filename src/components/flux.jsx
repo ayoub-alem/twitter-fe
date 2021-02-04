@@ -64,7 +64,7 @@ const Flux = () => {
 
                 const channel = pusher.subscribe(getUser().user_id);
                 channel.bind('new_tweet', function (data) {
-                    getUser().user_id === data.post_owner ? toast.success("Post tweeted successfully :)") : toast.info(data.message);
+                    getUser().user_id === data.post_owner ? toast.success("Post tweeted successfully :)", {toastId: "post-tweeted"}) : toast.info(data.message);
                     console.log(data.post_owner);
                     setState(prevState => {
                         return {
