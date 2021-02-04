@@ -295,7 +295,6 @@ export default function SignupPic({ location }) {
         }
     }
     const onSuivre = async (e) => {
-        let target = e.currentTarget;
         if (e.currentTarget.classList.contains("suivre--active")) {
             e.currentTarget.classList.remove("suivre--active");
             e.currentTarget.innerHTML = "Suivre";

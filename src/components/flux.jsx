@@ -111,7 +111,7 @@ const Flux = () => {
                 postToSend(fileRef, state),
                 http.urlEncoded(cookies.get("x-auth-token"))
             );
-            toast.success(data,{toastId: "posted-tweet-response"});
+            toast.success(data);
             if (headers['x-auth-token']) {
                 cookies.remove("x-auth-token");
                 cookies.set('x-auth-token', headers['x-auth-token'], {
@@ -123,7 +123,7 @@ const Flux = () => {
                 return { ...prevState, newPost: { user_id: "", description_post: "", photo: false } }
             });
         } catch (error) {
-            toast.error(error.response, {toastId: "posted-tweet-response"})
+            toast.error(error.response)
         }
     }
 
