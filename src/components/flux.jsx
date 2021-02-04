@@ -111,7 +111,7 @@ const Flux = () => {
                 postToSend(fileRef, state),
                 http.urlEncoded(cookies.get("x-auth-token"))
             );
-            toast.success(data);
+            // toast.success(data);
             if (headers['x-auth-token']) {
                 cookies.remove("x-auth-token");
                 cookies.set('x-auth-token', headers['x-auth-token'], {
